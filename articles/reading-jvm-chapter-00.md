@@ -80,6 +80,7 @@ JVM の仕様は [The Java® Virtual Machine Specification](https://docs.oracle.
 - [JVM を読む - 導入](reading-jvm-chapter-01) - JVM の基本的なアーキテクチャとコンポーネントを解説します。
 - [JVM を読む - JVM の構造その１](reading-jvm-chapter-02-1-4) - JVM のクラスフォーマットのなかでも特に型について解説します。
 - [JVM を読む - JVM の構造その２](reading-jvm-chapter-02-5) - JVM のランタイム時のデータ領域について解説します。
+- [JVM を読む - JVM の構造その３](reading-jvm-chapter-02-6) - JVM のフレームについて解説します。
 
 ## まとめ
 
