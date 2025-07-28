@@ -19,7 +19,7 @@ JVM の仕様書は非常に長大で難解な内容が多いため，各セク�
 JVM の仕様書の第２章は「Java Virtual Machine の構造」です。
 といいましてもこの章は全７章ある JVM の仕様書の中でも特に長く，また特に複雑な内容ですので，この記事では複数に分けて解説していきます。
 
-ここでは Chapter 5 の内容（ランタイム時のデータ領域）を扱います。
+ここでは Chapter 2.5 の内容（ランタイム時のデータ領域）を扱います。
 
 ## 2.5 ランタイム時のデータ領域（[› 2.5 Runtime Data Areas](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.5)）
 
