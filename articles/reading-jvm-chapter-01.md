@@ -3,7 +3,7 @@ title: "JVM を読む - 導入"
 emoji: "🧬"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["java", "jvm", "jal"]
-published: false
+published: true
 ---
 
 前回の続きです。前回はこちらから。

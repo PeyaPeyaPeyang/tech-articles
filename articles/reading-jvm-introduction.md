@@ -3,7 +3,7 @@ title: "JVM を読む - はじめに"
 emoji: "🧬"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["java", "jvm", "jal"]
-published: false
+published: true
 ---
 
 はじめまして。こちらは Peyang （ぺやんぐ）です。
