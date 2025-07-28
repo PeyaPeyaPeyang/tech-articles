@@ -8,7 +8,7 @@ published: true
 
 前回の続きです。前回はこちらから。
 
-https://zenn.dev/peyang/articles/reading-jvm-00
+https://zenn.dev/peyang/articles/reading-jvm-chapter-00
 
 このシリーズは，JVM の仕様書を読み解くためのガイドとして構成しています。
 JVM の仕様書は非常に長大で難解な内容が多いため，各セクションごとに要点をまとめていきます。
