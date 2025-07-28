@@ -41,6 +41,7 @@ JVM が実行するのはこのバイトコードであり，Java 言語のソ�
 ## 2.2 データ型（[› 2.2 Data Types](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.2)）
 
 JVM は，プリミティブ型と参照型の２つのデータ型をサポートします。
+プリミティブ型とは，数値や真偽値などの基本的なデータ型であり，参照型とはオブジェクトや配列などの複雑なデータ型（への参照）を指します。
 これら両方は変数に格納したり，引数として渡したり，メソッドからの戻り値として使用したりできます。
 
 JVM は細かな**型チェックは行いません**。
@@ -77,7 +78,7 @@ ladd       ; スタックから２つの long 型の値をポップして足し�
 
 （脚注おわり。）
 
-### オブジェクト型のサポート
+### オブジェクト型
 
 JVM は**オブジェクト型**を仕様としてサポートしています。
 
@@ -134,6 +135,42 @@ JVM でサポートされるプリミティブ型は数値型と真偽値，お�
 
 これら浮動小数点型のデフォルト値は `0.0` です。
 
+```mermaid
+classDiagram
+    数値型 <|-- 整数型
+    数値型 <|-- 浮動小数点型
+
+    class 数値型 {
+        <<abstract>>
+    }
+
+    class 整数型 {
+        +byte : 8-bit
+        +short : 16-bit
+        +int : 32-bit
+        +long : 64-bit
+        +char : 16-bit （符号なし）
+    }
+
+    class 浮動小数点型 {
+        +float : 32-bit
+        +double : 64-bit
+    }
+
+    整数型 : byte 範囲 = -128 to 127
+    整数型 : short 範囲 = -32768 to 32767
+    整数型 : int 範囲 = -2,147,483,648 to 2,147,483,647
+    整数型 : long 範囲 = -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
+    整数型 : default 範囲 = 0
+
+    整数型 : char 範囲 = 0 to 65535 (Unicode)
+    整数型 : char デフォルト値 = '\u0000' (null 文字)
+
+    浮動小数点型 : float 精度 = 単精度 (32-bit)
+    浮動小数点型 : double 精度 = 倍精度 (64-bit)
+    浮動小数点型 : デフォルト値 = 0.0
+```
+
 #### 浮動小数点型の詳細
 
 浮動小数点型は IEEE 754 標準に基づいています。
@@ -144,7 +181,11 @@ JVM でサポートされるプリミティブ型は数値型と真偽値，お�
 特に `NaN`(Not a Number）や無限大（`Infinity`）などの特殊な値もサポートしており，
 これらは浮動小数点演算において特別な意味を持ちます。
 
-浮動小数点型の零以外の有限値（NaN や無限大を除く）は，次のように表現されます：$S \times M \times 2^{E - N + 1}$
+浮動小数点型の零以外の有限値（NaN や無限大を除く）は，次のように表現されます：
+
+$$
+S \times M \times 2^{E - N + 1}
+$$
 
 ここで：
 - $S$ は符号（-1 または 1）
@@ -185,6 +226,27 @@ System.out.println(a > 0); // false
 
 `returnAddress` 型の値は，JVM 命令のオペコードへのポインタを表します。数値のプリミティブ型とは異なり，
 実行時に何らかの操作によってその値が変化することはありません。
+
+```mermaid
+classDiagram
+    class returnAddress {
+        <<特殊型>>
+        +JumpTarget : JVM命令のアドレス
+        +変化しない値
+    }
+
+    class jsr {
+        +操作: サブルーチンにジャンプ
+        +スタックにreturnAddressを保存
+    }
+
+    class ret {
+        +操作: returnAddressを使ってジャンプ元に戻る
+    }
+
+    jsr --> returnAddress : 保存
+    ret --> returnAddress : 利用
+```
 
 ## 2.4. 参照型とその値（[› 2.4 Reference Types and Values](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.4)）
 
