@@ -7,7 +7,7 @@ published: false
 ---
 
 前回の続きです。前回はこちらから。
-@[card](https://zenn.dev/peyangarticles/reading-jvm-introduction)
+@[card](https://zenn.dev/peyang/articles/reading-jvm-introduction)
 
 # チャプタ１． Introduction
 
