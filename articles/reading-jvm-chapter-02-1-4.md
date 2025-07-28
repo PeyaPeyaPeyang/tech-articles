@@ -333,3 +333,7 @@ JVM はプリミティブ型と参照型の２つのデータ型をサポート�
 
 次回は Chapter 2.5 の内容（ランタイム時のデータ領域）を扱います。
 では，よいバイト・コードライフを！
+
+#### 次回リンク
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-02-5

@@ -175,3 +175,7 @@ JVM のランタイム時のデータ領域は，プログラムの実行に必�
 次回は Chapter 2.6 の内容（フレーム）を扱います。
 
 では，よいバイト・コードライフを！
+
+#### 次回リンク
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-02-6

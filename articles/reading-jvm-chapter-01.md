@@ -130,3 +130,7 @@ JVM は Java プログラムを実行するための仮想マシンであり，�
 次回は Chapter 2 の内容を扱います。
 JVM の仕様書の第２章は「Java Virtual Machine の構造」です。
 では，よいバイト・コードライフを！
+
+#### 次回リンク
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-02-1-4

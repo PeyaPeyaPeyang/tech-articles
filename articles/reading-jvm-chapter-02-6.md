@@ -376,5 +376,8 @@ sequenceDiagram
 
 フレームの理解は，JVM の動作やメソッドの実行の仕組みを深く理解するために重要です。
 次回は Chapter 2.7, 2.8 の内容を扱います（比較的軽い内容です）。
-
 では，よいバイト・コードライフを！
+
+#### 次回リンク
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-02-7-8
