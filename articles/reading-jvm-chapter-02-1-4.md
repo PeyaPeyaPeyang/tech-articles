@@ -108,6 +108,8 @@ System.out.println(arr[0]); // 2 と出力される
 そのため `doStuff` メソッド内で `array[0] = 2; ` とすると、`arr` の最初の要素が変更されます。
 このように，JVM はオブジェクト型を参照型として扱い，オブジェクトのメモリ上の位置を指すポインタを使用して操作します。
 
+（脚注おわり。）
+
 ## 2.3. プリミティブ型とその値（[› 2.3 Primitive Types and Values](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.3)）
 
 JVM でサポートされるプリミティブ型は数値型と真偽値，および `returnAddress` 型の３つです。
