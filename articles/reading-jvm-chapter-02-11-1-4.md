@@ -23,7 +23,7 @@ https://zenn.dev/peyang/articles/reading-jvm-chapter-00
 JVM の仕様書の第２章は「Java Virtual Machine の構造」です。
 といいましてもこの章は全７章ある JVM の仕様書の中でも特に長く，また特に複雑な内容ですので，この記事では複数に分けて解説していきます。
 
-ここでは Chapter 2.11 の内容を扱います。
+ここでは Chapter 2.11.1 ～ Chapter 2.11.4 の内容を扱います。
 
 ### 2.11 命令セット概論（[› 2.11 Instruction Set Summary](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.11)）
 
@@ -382,6 +382,10 @@ JVM の命令セットは，オペコードとオペランドを組み合わせ�
 次回は，JVM の命令セットの解説の続きとして，オブジェクトの生成やフロー制御に関する命令について解説します。
 
 では，よいバイト・コードライフを！
+
+#### 次回リンク
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-02-11-5-10
 
 #### 参考文献＆リンク集
 
