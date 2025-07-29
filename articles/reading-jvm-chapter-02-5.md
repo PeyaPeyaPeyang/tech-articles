@@ -198,3 +198,9 @@ JVM のランタイム時のデータ領域は，プログラムの実行に必�
 #### 次回リンク
 
 https://zenn.dev/peyang/articles/reading-jvm-chapter-02-6
+
+#### 参考文献＆リンク集
+
++ Lindholm, T., Yellin, F., Bracha, G., & Smith, W. M. D. (2025). [*The Java® Virtual Machine Specification: Java SE 24 Edition*](https://docs.oracle.com/javase/specs/jvms/se24/html/).
++ Lindholm, T., & Yellin, F. (1999). *The Java™ Virtual Machine Specification* (2nd ed.). Addison-Wesley. ISBN 978-0-201-43294-7
++ Otavio, S. (2024). *Mastering the Java Virtual Machine*.  Packet Publishing. ISBN 978-1-835-46796-1
