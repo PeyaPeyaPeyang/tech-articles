@@ -83,6 +83,21 @@ JVM 仕様では，ガベージ・コレクタの具体的な実装やアルゴ�
 ただし，使用できるヒープサイズ以上のヒープを必要とする場合， JVM は `OutOfMemoryError` をスローします。
 :::
 
+#### ぺやんぐ注
+
+ヒープについて，Eden 領域や Survivor 領域，Old 領域などの詳細な説明をよくみます。
+あれは JVM の実装に依存する部分であり，実は JVM 仕様書では定義されていません。
+ヒープは単に「オブジェクトの実体が格納される領域」であり，その実装は JVM の実装者に任されています。
+ですから，ヒープの実装は JVM の実装によって異なることがあります。
+
+特に Eden 領域や Survivor 領域，或いは Old 領域などは HotSpot JVM の実装に特有の概念であり，他の VM 実装では異なる実装がされています。
+例えば G1GC（Garbage-First Garbage Collector）では，ヒープは複数のリージョンに分割されており，各リージョンが異なる役割を持っています。
+Eden 領域等の概念はありますが，HotSpot JVM のように明確に区分されているわけではありません。
+
+さらに [ZGC（The Z Garbage Collector）](https://wiki.openjdk.org/display/zgc/Main) や [Shenandoah GC](https://wiki.openjdk.org/display/shenandoah/Main) などの新しいガベージ・コレクタでは，ヒープの管理方法がさらに異なり，
+これらのガベージ・コレクタ実装では Eden 領域や Survivor 領域の概念は存在しません。
+
+（脚注おわり。）
 
 ### メソッド領域（JVM 全体）
 
