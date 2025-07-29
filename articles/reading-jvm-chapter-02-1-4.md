@@ -262,19 +262,19 @@ label:
 
 ```mermaid
 classDiagram
-    cslass returnAddress {
+    class returnAddress {
         <<特殊型>>
         +JumpTarget : JVM命令のアドレス
         +変化しない値
     }
 
     class jsr {
-        +操作: サブルーチンにジャンプ
+        +操作() サブルーチンにジャンプ
         +スタックにreturnAddressを保存
     }
 
     class ret {
-        +操作: returnAddressを使ってジャンプ元に戻る
+        +操作() returnAddressを使ってジャンプ元に戻る
     }
 
     jsr --> returnAddress : 保存
