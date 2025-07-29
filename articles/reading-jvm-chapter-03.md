@@ -1,5 +1,5 @@
 ---
-title: "JVM を読む | コード・コンパイルその１ - 環境構築編"
+title: "JVM を読む | JVM をハックする その１ - 環境構築編"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["java", "jvm", "jal"]
