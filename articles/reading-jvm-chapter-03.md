@@ -50,7 +50,7 @@ Jasmin は Java バイトコードを人間が読みやすい形式で記述で�
    Jasmin は Java SE 1.5 までの機能にしか対応しておらず，Java SE 1.6 以降の新しい機能（例えば `invokedynamic` 命令）には対応していません。
    そのため，最新の Java バージョンでの実行には Jasmin は適していません。
 2. *StackMapFrame* の生成がサポートされていない
-   [JVM を読む | JVM の構造その１ - 型について]（https://zenn.dev/peyang/articles/reading-jvm-chapter-02-1-4#%E3%81%BA%E3%82%84%E3%82%93%E3%81%90%E6%B3%A8-2)で私が述べた通り，Java SE 1.6 で導入され，Java SE 1.7 で必須となった *StackMapFrame* の生成が Jasmin ではサポートされていません。
+   [JVM を読む | JVM の構造その１ - 型について](https://zenn.dev/peyang/articles/reading-jvm-chapter-02-1-4#%E3%81%BA%E3%82%84%E3%82%93%E3%81%90%E6%B3%A8-2) で私が述べた通り，Java SE 1.6 で導入され，Java SE 1.7 で必須となった *StackMapFrame* の生成が Jasmin ではサポートされていません。
    *StackMapFrame* は，JVM がバイトコードを検証するために必要な情報を提供するものであり，もしこれがないと（必ず）*VerifyError* が発生して，JVM はまともに取り合ってくれません。
 3. 構文がややわかりにくい
    例えばクラスの宣言は
