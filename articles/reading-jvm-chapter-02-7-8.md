@@ -120,3 +120,7 @@ JVM 実装者に *Extended-Exponent Value Set*（拡張指数値セット）を�
 次回は Chapter 2.9, 2.10 の内容（特別なメソッドと例外制御）を扱います。
 
 では，よいバイト・コードライフを！
+
+#### 次回リンク
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-02-9-10
