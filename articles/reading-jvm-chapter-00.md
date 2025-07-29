@@ -85,6 +85,7 @@ JVM の仕様は [The Java® Virtual Machine Specification](https://docs.oracle.
 - [JVM を読む - JVM の構造その５](reading-jvm-chapter-02-9-10) - JVM の特別なメソッドと例外処理について解説します。
 - [JVM を読む - JVM の構造その６](reading-jvm-chapter-02-11-1-4.md) - JVM の命令セットと型の関係について解説します。
 - [JVM を読む - JVM の構造その７](reading-jvm-chapter-02-11-5-10.md) - JVM のオブジェクトの作成と操作，オペランド・スタックの管理について解説します。
+- [JVM を読む - JVM の構造その８](reading-jvm-chapter-02-12-13.md) - JVM のクラス・ライブラリとメソッドの呼び出しについて解説します。
 
 ## まとめ
 
