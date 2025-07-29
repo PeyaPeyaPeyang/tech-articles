@@ -48,7 +48,7 @@ Jasmin は Java バイトコードを人間が読みやすい形式で記述で�
 
 1. Java の最新の機能に対応していない
    Jasmin は Java SE 1.5 までの機能にしか対応しておらず，Java SE 1.6 以降の新しい機能（例えば `invokedynamic` 命令）には対応していません。
-   そのため、最新の Java バージョンでの実行には Jasmin は適していません。
+   そのため，最新の Java バージョンでの実行には Jasmin は適していません。
 2. *StackMapFrame* の生成がサポートされていない
    [JVM を読む | JVM の構造その１ - 型について]（https://zenn.dev/peyang/articles/reading-jvm-chapter-02-1-4#%E3%81%BA%E3%82%84%E3%82%93%E3%81%90%E6%B3%A8-2)で私が述べた通り，Java SE 1.6 で導入され，Java SE 1.7 で必須となった *StackMapFrame* の生成が Jasmin ではサポートされていません。
    *StackMapFrame* は，JVM がバイトコードを検証するために必要な情報を提供するものであり，もしこれがないと（必ず）*VerifyError* が発生して，JVM はまともに取り合ってくれません。
@@ -84,9 +84,9 @@ JAL は Jasmin の後継として私が設計した Java 用アセンブラ言�
    といったように，Java のクラス宣言とほぼ同じ構文を使用します（メソッドの宣言は少々異なりますが…）。
 - **StackMapFrame の自動生成**
    JAL は *StackMapFrame* の自動生成をサポートしており，Jasmin のように，コンパイルした後に ASM などのツールを使って StackMapFrame を生成する必要がありません。
-   これにより、JAL で生成されたバイトコードは Java SE 1.6 以降のバージョンでも問題なく実行できます。
-- *構文が直感的*
-   JAL の構文は直感的であり、Java 開発者にとっては読みやすくなっています。
+   これにより，JAL で生成されたバイトコードは Java SE 1.6 以降のバージョンでも問題なく実行できます。
+- **構文が直感的**
+   JAL の構文は直感的であり，Java 開発者にとっては読みやすくなっています。
    
    例えば次のコードを考えます。
    ```jal
@@ -95,7 +95,7 @@ JAL は Jasmin の後継として私が設計した Java 用アセンブラ言�
    ```
    ここでは `istore` 命令でローカル変数のスロット番号 0 に `example` という名前を付けて整数値を格納して，`iload` 命令でその値を読み込んでいます。
    このように JAL は，本来スロット番号を指定してローカル変数を操作しなければいけないところを，**変数名を指定して操作できるようにしています**。
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/) との密な連携
+- **[IntelliJ IDEA](https://www.jetbrains.com/idea/) との密な連携**
    JAL は IntelliJ IDEA のプラグインを提供しており， IDE 上で JAL コードを編集・実行できます。
    このプラグインは JAL の構文ハイライトやコード補完をカンペキにサポートしており，開発者は JAL コードを簡単に記述できます。
    
@@ -127,7 +127,7 @@ JAL は次の形式でディストリビューションされています。
    JAL のコンパイルや実行を Gradle タスクとして定義できます。
 3. JAL IntelliJ IDEA プラグイン：[Javasm](https://plugins.jetbrains.com/plugin/27944-javasm)
    JAL コードを IntelliJ IDEA 上で編集・実行するためのプラグインです。
-   JAL の構文ハイライトやコード補完、デバッグ機能を提供します。
+   JAL の構文ハイライトやコード補完，デバッグ機能を提供します。
 
 さて，本記事では Javasm を用いて解説を進めていきます。
 
@@ -243,7 +243,7 @@ https://plugins.jetbrains.com/plugin/27944-javasm
 
 ### ステップ１. 新しい Java プロジェクトを作成する
 
-IntelliJ IDEA を起動したら、メイン画面で「新規プロジェクト」を選択します。
+IntelliJ IDEA を起動したら，メイン画面で「新規プロジェクト」を選択します。
 
 ![creating-new-project](/images/reading-jvm-chapter-03/creating-new-project.png)
 
@@ -304,8 +304,8 @@ IntelliJ IDEA を起動したら、メイン画面で「新規プロジェクト
 左側の行番号は通常のファイルの行番号のように見えますが，右側の行番号は何でしょうか。
 
 これは，JVM のバイト・コード・オフセットを示しています。
-バイト・コード・オフセットは、JAL ファイルがコンパイルされたときに生成される JVM バイトコードの各命令のオフセットを示しています。
-JAL ファイルをコンパイルすると、JVM バイトコードが生成されますが，そのバイトコードの各命令は連続したバイト列として表現されます。
+バイト・コード・オフセットは，JAL ファイルがコンパイルされたときに生成される JVM バイトコードの各命令のオフセットを示しています。
+JAL ファイルをコンパイルすると，JVM バイトコードが生成されますが，そのバイトコードの各命令は連続したバイト列として表現されます。
 Javasm はこのバイトコードの各命令のオフセットを表示するために，右側の行番号を使用しています。
 
 ### ステップ５. 習うより慣れろ
@@ -394,7 +394,7 @@ public class HelloWorld {
 
 次に `invokevirtual java/io/PrintStream->println(Ljava/lang/String;)V` は `java/io/PrintStream` クラスの `println` メソッドを呼び出す命令です。
 この命令は先ほど取得した標準出力ストリームに対して文字列を出力するために使用されます。
-引数として `Ljava/lang/String;` を指定していることから、`println` メソッドは文字列を引数として受け取ることがわかります。
+引数として `Ljava/lang/String;` を指定していることから，`println` メソッドは文字列を引数として受け取ることがわかります。
 
 最後に `return` 命令は `main` メソッドからの戻りを示します。
 
@@ -425,10 +425,10 @@ public class HelloWorld {
 (<引数の型>[引数2の型...])<戻り値の型>
 ```
 例：
-- `([Ljava/lang/String;)V` は、引数として `java/lang/String` 型の配列を受け取り，戻り値がないことを示しています。
-- `(I)Ljava/lang/String;` は、引数として `int` 型を受け取り，戻り値として `java/lang/String` 型を返すことを示しています。
-- `(I)[Ljava/lang/String;` は、引数として `int` 型を受け取り，戻り値として `java/lang/String` 型の配列を返すことを示しています。
-- `(Ljava/lang/String;I)Z` は、引数として `java/lang/String` 型と `int` 型を受け取り，戻り値として `boolean` 型を返すことを示しています。
+- `([Ljava/lang/String;)V` は，引数として `java/lang/String` 型の配列を受け取り，戻り値がないことを示しています。
+- `(I)Ljava/lang/String;` は，引数として `int` 型を受け取り，戻り値として `java/lang/String` 型を返すことを示しています。
+- `(I)[Ljava/lang/String;` は，引数として `int` 型を受け取り，戻り値として `java/lang/String` 型の配列を返すことを示しています。
+- `(Ljava/lang/String;I)Z` は，引数として `java/lang/String` 型と `int` 型を受け取り，戻り値として `boolean` 型を返すことを示しています。
 
 次に，`getstatic java/lang/System->out:Ljava/io/PrintStream;` は `java/lang/System` クラスの `out` フィールド（型は `java/io/PrintStream`）を取得する命令です。
 この命令は標準出力ストリームを取得するために使用されます。

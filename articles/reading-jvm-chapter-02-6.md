@@ -99,7 +99,7 @@ sequenceDiagram
     Frame2->>Frame2: 新しいローカル変数配列とオペランド・スタック保持
 
     Frame2->>FrameStack: メソッド終了（戻り値あり）
-    FrameStack->>Frame1: 戻り値を渡して、フレーム2を破棄
+    FrameStack->>Frame1: 戻り値を渡して，フレーム2を破棄
 ```
 
 ```mermaid
