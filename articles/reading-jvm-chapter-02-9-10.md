@@ -37,9 +37,9 @@ JVM は，特定の（名前と）シグニチャを持つメソッドを *Speci
 これらのメソッドは，特定の目的や動作を持ち，通常のメソッドとは異なる扱いを受けます。
 
 特別なメソッドは，以下の３つに分類されます：
-1. [インスタンス初期化メソッド](#291-インスタンス初期化メソッド-291-instance-initialization-methods)
-2. [クラス初期化メソッド](#292-クラス初期化メソッド-292-class-initialization-methods)
-3. [シグネチャ多態メソッド](#293-シグネチャ多態メソッド-293-signature-polymorphic-methods)
+1. [インスタンス初期化メソッド](#2.9.1-インスタンス初期化メソッド（›-2.9.1-instance-initialization-methods）)
+2. [クラス初期化メソッド](2.9.2-クラス初期化メソッド（›-2.9.2-class-initialization-methods）)
+3. [シグネチャ多態メソッド](#2.9.3-シグネチャ多態メソッド（›-2.9.3-signature-polymorphic-methods）)
 
 ### 2.9.1 インスタンス初期化メソッド（[› 2.9.1 Instance Initialization Methods](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.9.1)）
 
