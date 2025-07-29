@@ -83,6 +83,7 @@ JVM の仕様は [The Java® Virtual Machine Specification](https://docs.oracle.
 - [JVM を読む - JVM の構造その３](reading-jvm-chapter-02-6) - JVM のフレームについて解説します。
 - [JVM を読む - JVM の構造その４](reading-jvm-chapter-02-7-8) - JVM のオブジェクトの表現と浮動小数点数の計算について解説します。
 - [JVM を読む - JVM の構造その５](reading-jvm-chapter-02-9-10) - JVM の特別なメソッドと例外処理について解説します。
+- [JVM を読む - JVM の構造その６](reading-jvm-chapter-02-11-1-4.md) - JVM の命令セットと型の関係について解説します。
 
 ## まとめ
 
