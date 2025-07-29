@@ -1,5 +1,5 @@
 ---
-title: "JVM を読む | JVM の構造その７ - 閑話：JVM が満たすべき要件と原則について"
+title: "JVM を読む | JVM の構造その８ - 閑話：JVM が満たすべき要件と原則について"
 emoji: "🖥"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["java", "jvm", "jal"]
