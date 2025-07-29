@@ -8,11 +8,15 @@ published: true
 
 前回の続きです。前回はこちらから。
 
-https://zenn.dev/peyang/articles/reading-jvm-chapter-02-7-8
+https://zenn.dev/peyang/articles/reading-jvm-chapter-02-9-10
 
 このシリーズは，JVM の仕様書を読み解くためのガイドとして構成しています。
 JVM の仕様書は非常に長大で難解な内容が多いため，各セクションごとに要点をまとめていきます。
 また，JVM の内部構造や動作原理を知ることで，Java のパフォーマンスやセキュリティ，メモリ管理の仕組みを深く理解する試みです。
+
+シリーズはこちらから。
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-00
 
 ## 第二章 The Structure of the Java Virtual Machine
 

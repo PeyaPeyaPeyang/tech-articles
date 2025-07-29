@@ -14,6 +14,10 @@ https://zenn.dev/peyang/articles/reading-jvm-chapter-02-6
 JVM の仕様書は非常に長大で難解な内容が多いため，各セクションごとに要点をまとめていきます。
 また，JVM の内部構造や動作原理を知ることで，Java のパフォーマンスやセキュリティ，メモリ管理の仕組みを深く理解する試みです。
 
+シリーズはこちらから。
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-00
+
 ## 第二章 The Structure of the Java Virtual Machine
 
 JVM の仕様書の第２章は「Java Virtual Machine の構造」です。
