@@ -278,7 +278,7 @@ classDiagram
     }
 
     jsr --> returnAddress : 保存
-    ret --> returnAddress : 利用
+    returnAddress --> ret : 利用
 ```
 
 ### ぺやんぐ注
