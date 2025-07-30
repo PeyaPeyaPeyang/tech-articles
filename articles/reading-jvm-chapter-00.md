@@ -105,6 +105,7 @@ https://zenn.dev/peyang/articles/reading-jvm-chapter-02-1-4
 #### 第三章 Compiling for the Java Virtual Machine
 
 - [JVM を読む - JVM をハックする その１](reading-jvm-chapter-03) - JVM の命令を手打ちするための環境を構築します。
+- [JVM を読む - JVM をハックする その２](reading-jvm-chapter-03-01) - JVM の命令を手打ちするための基本的な知識を学びます。
 
 ## まとめ
 
