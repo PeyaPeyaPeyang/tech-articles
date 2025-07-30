@@ -27,25 +27,40 @@ JVM の仕様書の第２章は「Java Virtual Machine の構造」です。
 
 ### 2.11.5 オブジェクトの作成と操作（[› 2.11.5 Object Creation and Manipulation](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.11.5)）
 
-クラス・インスタンスと配列はどちらもオブジェクトですが，これらの作成と操作は異なる命令を使用します。
+クラス・インスタンスと配列はどちらも**オブジェクト**（構造を持つデータ）として扱われますが，これらの作成と操作には異なる命令を使用します。
 
 #### オブジェクトの作成
 
 オブジェクトの作成は `new` 系命令を使用して行います。
 
-+ `new`：クラス・インスタンスを作成します。
-+ `newarray`：プリミティブ型の配列を作成します。
-+ `anewarray`：参照型の配列を作成します。
-+ `multianewarray`：多次元配列を作成します。
++ `new`：クラス・インスタンスを作成します（`new Object()` に相当）。
++ `newarray`：プリミティブ型の配列（`int[]` や `byte[]` など）を作成します。
++ `anewarray`：参照型の配列（`String[]` など）を作成します。
++ `multianewarray`：多次元配列（`int[][]` や `String[][]` など）を作成します。
 
 #### オブジェクトのアクセス
 
 オブジェクトのフィールドや静的フィールドへのアクセスは，`get` 系命令と `put` 系命令を使用して行います。
 
-+ `getfield`：インスタンスフィールドを取得します。
-+ `putfield`：インスタンスフィールドに値を設定します。
++ `getfield`：インスタンス・フィールドを取得します。
++ `putfield`：インスタンス・フィールドに値を設定します。
 + `getstatic`：静的フィールドを取得します。
 + `putstatic`：静的フィールドに値を設定します。
+
+:::message
+インスタンス・フィールドとは，クラスのインスタンスごとに存在するフィールドのことです。
+一方で，静的フィールドはクラス全体で共有されるフィールドです。
+
+例えば，`java.lang.String` クラスの `length` フィールドはインスタンス・フィールドであり，各文字列オブジェクトごとに異なる値を持ちます。
+一方で，`java.lang.Math` クラスの `PI` フィールドは静的フィールドであり、クラス全体で共有される定数値です。
+
+```java
+class MyClass {
+    private int instanceField; // インスタンス・フィールド
+    private static int staticField; // 静的フィールド
+}
+```
+:::
 
 #### 配列のアクセス
 
@@ -55,7 +70,12 @@ JVM の仕様書の第２章は「Java Virtual Machine の構造」です。
 さらに，各要素の型に応じて固有の接頭辞をつけることで命令を表現します。
 （`byte` 型の配列の場合は `baload` と `bastore`，`char` 型の配列の場合は `caload` と `castore`，など）
 
-例：`baload` は `byte` 型の配列から要素を取得する命令です。
+例：
+```java
+aload 0     // スタックに配列をプッシュ
+iconst_0    // スタックに取得したい配列要素のインデックスをプッシュ
+baload      // スタックのトップの配列から要素を取得し，スタックにプッシュ
+```
 
 #### 配列の長さの取得
 
@@ -63,20 +83,52 @@ JVM の仕様書の第２章は「Java Virtual Machine の構造」です。
 この命令は，配列の長さをスタックにプッシュします。
 なおこの命令は直交的であり，配列の要素の型に依存しません。
 
+```java
+aload 0     // スタックに配列をプッシュ
+arraylength // スタックのトップの配列の長さを取得し，スタックにプッシュ
+```
+
 ### 2.11.6 オペランド・スタックを管理する命令（[› 2.11.6 Operand Stack Management Instructions](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.11.6)）
 
 オペランド・スタックは，JVM の命令が操作する値を一時的に格納するためのスタックです。
 以下の直交的な命令を使用して，オペランド・スタックを管理します。
 
 + `dup`：スタックのトップの値を複製します。
+   ```
+   ..., value -> ..., value, value
+   ```
 + `dup_x1`：スタックのトップの値を複製し，その複製をスタックの２番目に配置します。
+   ```
+   ..., value1, value2 -> ..., value2, value1, value2
+   ```
 + `dup_x2`：スタックのトップの値を複製し，その複製をスタックの３番目に配置します。
+   ```
+   ..., value1, value2, value3 -> ..., value2, value3, value1, value2
+   ```
 + `dup2`：スタックのトップの２つの値を複製します。
+   ```
+   ..., value1, value2 -> ..., value1, value2, value1, value2
+   ```
 + `dup2_x1`：スタックのトップの２つの値を複製し，その複製をスタックの３番目と４番目に配置します。
+   ```
+   ..., value1, value2, value3 -> ..., value2, value3, value1, value2
+   ```
 + `dup2_x2`：スタックのトップの２つの値を複製し，その複製をスタックの４番目と５番目に配置します。
+   ```
+   ..., value1, value2, value3, value4 -> ..., value2, value3, value4, value1, value2
+   ```
 + `pop`：スタックのトップの値を削除します。
+   ```
+   ..., value1, value2 -> ..., value1
+   ```
 + `pop2`：スタックのトップの２つの値を削除します。
+   ```
+   ..., value1, value2, value3 -> ..., value1
+   ```
 + `swap`：スタックのトップの２つの値を入れ替えます。
+   ```
+   ..., value1, value2 -> ..., value2, value1
+   ```
 
 ### 2.11.7 制御の移譲命令（[› 2.11.7 Control Transfer Instructions](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-2.html#jvms-2.11.7)）
 
