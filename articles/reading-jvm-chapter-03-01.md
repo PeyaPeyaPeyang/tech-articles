@@ -161,6 +161,8 @@ getstatic java/lang/System->out:Ljava/io/PrintStream;
 今回の記事は比較的短い内容でしたが、JVM の命令を理解するための基礎知識を構築できかたかと思います。
 次回からは JVM の命令を一つ一つ詳しく解説していきますから，お楽しみにしていてください。
 
+では，よいバイト・コードライフを！
+
 #### 参考文献＆リンク集
 
 + Lindholm, T., Yellin, F., Bracha, G., & Smith, W. M. D. (2025). [*The Java® Virtual Machine Specification: Java SE 24 Edition*](https://docs.oracle.com/javase/specs/jvms/se24/html/).
