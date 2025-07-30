@@ -466,7 +466,7 @@ JAL の基本的な構文や命令についても触れながら，実際に JAL
 
 #### 次回リンク
 
-https://zenn.dev/peyang/articles/reading-jvm-chapter-03-01
+https://zenn.dev/peyang/articles/reading-jvm-chapter-03-1
 
 #### 参考文献＆リンク集
 
