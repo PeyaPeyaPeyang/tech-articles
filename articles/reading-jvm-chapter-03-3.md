@@ -138,9 +138,9 @@ String getObjectVoice() {
 
 このように，JVM の命令はオペランド・スタックを利用して，算術演算やメソッド呼び出しを効率的に行います。
 
-### 3.5 ランタイム・定数プールにアクセスする（[› 3.5 Accessing the Run-Time Constant Pool](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-3.html#jvms-3.5)）
+### 3.5 実行時定数プールにアクセスする（[› 3.5 Accessing the Run-Time Constant Pool](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-3.html#jvms-3.5)）
 
-多くの数値定数，オブジェクトや，フィールド，さらにはメソッドは，現在のクラスのランタイム・定数プールに格納されており，ここにアクセスして使用します。
+多くの数値定数，オブジェクトや，フィールド，さらにはメソッドは，現在のクラスの実行時定数プールに格納されており，ここにアクセスして使用します。
 
 `int` 型や，`long` 型，`float` 型，`double` 型の値，および文字列への参照は，`ldc` 系の命令（`ldc` や, `ldc_w`, `ldc2_w`）を使って取得できます。
 （オブジェクトへの参照は後述します。）
