@@ -118,7 +118,7 @@ class java/lang/invoke/MethodHandle {
     public final native Object invoke(Object...args);
 }
 ```
-という定義であっても，実際には `int`, `String`, `boolean` などの型を柔軟に受け取ります。
+という定義であっても，実際には `int`，`String`，`boolean` などの型を柔軟に受け取ります。
 上記定義は普通の可変引数メソッドに見えますが，バイト・コード的にはシグニチャ多態メソッドとして扱われます。
 
 :::message alert 

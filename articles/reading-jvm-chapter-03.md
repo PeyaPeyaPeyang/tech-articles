@@ -41,7 +41,7 @@ JVM の命令は実質的にはアセンブリ言語であり，Java ソース�
 ### Jasmin - 超有名 Java 用アセンブラ言語
 
 現在（狭い業界の）デファクト・スタンダートになっている Java 用アセンブラ言語があります。
-*Jasmin* と名付けられたこのアセンブラ言語は, 1996 年に *NYU Research Lab* の *Jonathan Meyer*, *Daniel Reynaud* ら によって開発されました。
+*Jasmin* と名付けられたこのアセンブラ言語は，1996 年に *NYU Research Lab* の *Jonathan Meyer*，*Daniel Reynaud* ら によって開発されました。
 Jasmin は Java バイトコードを人間が読みやすい形式で記述できるように設計されており，Java バイトコードを生成するためのツールとして広く使用されています。
 
 しかしながらこの Jasmin は 2010 年に開発が停止されており，2025 年現在の最新の Java バージョン（例えば SE 24）で使うには次の障壁があります。
