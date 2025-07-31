@@ -152,8 +152,12 @@ String getObjectVoice() {
 
 :::message
 なお，小さな整数の値（`byte` 型や `short`型, `char` 型および `boolean` 型の値を含む）は，`bipush` 命令や `sipush` 命令，或いは `iconst_<i>` 命令を替わりに使用できます。
+それぞれ次の範囲を扱えます：
++ `bipush` 命令：*-128 ～ 127*（`byte` 型の範囲）
++ `sipush` 命令：*-32,768 ～ 32,767* （`short` 型の範囲）
++ `iconst_<i>` 命令：*0 ～ 5*（`int` 型の範囲）
+  -> `iconst_0`, `iconst_1`, `iconst_2`, `iconst_3`, `iconst_4`, `iconst_5`
 
-それぞれ `bipush` は *-128 ～ 127* の範囲の値を，`sipush` は *-32768 ～ 32767* の範囲の値を，`iconst_<i>` は *-1 ～ 5* の範囲の値を扱えます。
 さらに浮動小数点数の値として，*0.0* や *1.0* などの小さな値は，`fconst_<f>`（`float`）, `dconst_<d>`（`double`）命令を使用して取得できます。
 :::
 
