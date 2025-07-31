@@ -29,7 +29,7 @@ JVM の仕様書の第３章は「Java Virtual Machine のためのコンパイ�
 
 ハンド・ブックはこちらから。
 
-https://zenn.dev/peyang/articles/reading-jvm-chapter-03-01
+https://zenn.dev/peyang/articles/reading-jvm-chapter-03-1
 
 ## 3.2 定数や，ローカル変数，および制御構造を使う（[› 3.2 Use of Constants, Local Variables, and Control Structures](https://docs.oracle.com/javase/specs/jvms/se24/html/jvms-3.html#jvms-3.2)）
 
