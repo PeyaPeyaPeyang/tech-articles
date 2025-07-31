@@ -106,6 +106,7 @@ https://zenn.dev/peyang/articles/reading-jvm-chapter-02-1-4
 
 - [JVM を読む - JVM をハックする その１](reading-jvm-chapter-03) - JVM の命令を手打ちするための環境を構築します。
 - [JVM を読む - JVM をハックする その２](reading-jvm-chapter-03-1) - JVM の命令を手打ちするための基本的な知識を学びます。
+- [JVM を読む - JVM をハックする その３](reading-jvm-chapter-03-2) - 制御変数の使い方や，定数の扱いについて学びます。
 
 ## まとめ
 
