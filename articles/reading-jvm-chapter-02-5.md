@@ -21,7 +21,7 @@ https://zenn.dev/peyang/articles/reading-jvm-chapter-00
 ## 第二章 The Structure of the Java Virtual Machine
 
 JVM の仕様書の第２章は「Java Virtual Machine の構造」です。
-といいましてもこの章は全７章ある JVM の仕様書の中でも特に長く，また特に複雑な内容ですので，全８回に複数に分けて解説していきます。
+といいましてもこの章は全７章ある JVM の仕様書の中でも特に長く，また特に複雑な内容ですので，全８回に分けて解説していきます。
 
 ここでは Chapter 2.5 の内容（ランタイム時のデータ領域）を扱います。
 
