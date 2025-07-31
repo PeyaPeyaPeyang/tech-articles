@@ -427,6 +427,10 @@ JVM 仮想マシンが `byte` 型や，`char` 型，或いは `short` 型を直�
 
 次回は，算術演算とランタイム・定数プールにアクセスする方法について学びます。
 
+### 次回リンク
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-03-3
+
 では，よいバイト・コードライフを！
 
 #### 参考文献＆リンク集
