@@ -83,6 +83,38 @@ Method align2grain(int, int)
 ```
 :::
 
+以下の図は，この一連の命令の流れを示しています。
+
+```mermaid
+flowchart TD
+    start("開始")
+
+    iload1["iload_1<br>（i を読み出し）"]
+    iload2_a["iload_2<br>（grain を読み出し）"]
+    iadd["iadd<br>（i + grain）"]
+    iconst1_a["iconst_1<br>（1 をプッシュ）"]
+    isub_a["isub<br>（i + grain - 1）"]
+
+    iload2_b["iload_2<br>（grain を再読み出し）"]
+    iconst1_b["iconst_1<br>（1 をプッシュ）"]
+    isub_b["isub<br>（grain - 1）"]
+    iconst_m1["iconst_m1<br>（-1 をプッシュ）"]
+    ixor["ixor<br>（~(grain - 1)）"]
+
+    iand["iand<br>（(i + grain - 1) & ~(grain - 1)）"]
+    ireturn["ireturn<br>（結果を返す）"]
+
+    start --> iload1 & iload2_a --> iadd
+    iadd --> iconst1_a --> isub_a
+    iadd --> isub_a
+
+    isub_a --> iand --> ireturn
+
+    isub_a --> iload2_b & iconst1_b --> isub_b
+    isub_b --> iconst_m1 --> ixor
+    isub_b --> ixor --> iand
+```
+
 算術演算をする命令のオペランド（命令の引数）はオペランド・スタックから取り出されて，さらにその演算結果はオペランド・スタックに積まれます。
 このことから，或る演算命令の演算結果を，**別の算術命令のオペランドとして**（ローカル変数にいれたりせずにとも）使用できることが分かります。
 

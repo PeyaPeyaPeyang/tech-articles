@@ -93,6 +93,35 @@ Method whileInt()
 この例では，`while` 文の条件をチェックするために `if_icmplt` 命令を使用しています。
 さらに前記事で学んだように，制御変数が `int` 方であるため，全て `int` 系の命令を使用しています。
 
+以下の図は，この一連の命令の流れを示しています。
+
+```mermaid
+flowchart TD
+    start("開始")
+
+    iconst0["iconst_0<br>（定数 0 をプッシュ）"]
+    istore1["istore_1<br>（ローカル変数 i に格納）"]
+    gotoLoopCheck["goto LoopCheck<br>（条件チェックへジャンプ）"]
+
+    LoopBodyLabel["LoopBody:"]
+    iinc["iinc 1 1<br>（i をインクリメント）"]
+
+    LoopCheckLabel["LoopCheck:"]
+    iload1["iload_1<br>（ローカル変数 i を読み出し）"]
+    bipush100["bipush 100<br>（定数 100 をプッシュ）"]
+    if_icmplt["if_icmplt LoopBody<br>（i < 100 の場合ループ継続）"]
+
+    ret["return<br>（メソッド終了）"]
+
+    start --> iconst0 --> istore1 --> gotoLoopCheck --> LoopCheckLabel
+    LoopCheckLabel --> iload1 & bipush100 --> if_icmplt
+    if_icmplt -- はい --> LoopBodyLabel --> iinc --> LoopCheckLabel
+    if_icmplt -- いいえ --> ret
+
+    istore1 .-> iload1
+    iinc .-> iload1
+```
+
 #### ループ条件のチェックは前？後？
 
 通常 Java の `while` 文では，ループの条件を先頭に記述します。
@@ -247,7 +276,37 @@ Method whileDouble()
 また，`dadd` 命令で制御変数の値を 1 増やし，`dcmpg` 命令で制御変数と定数の比較を行います。
 最後に`iflt` 命令でループの条件をチェックし，必要に応じてループの本体へジャンプします。
 
-#### 命令は完全には直交していない
+以下の図は，この一連の命令の流れを示しています。
+
+```mermaid
+flowchart TD
+    start("開始")
+
+    dconst0["dconst_0<br>（定数 0.0 をプッシュ）"]
+    dstore1["dstore_1<br>（ローカル変数 d に格納）"]
+    gotoLoopCheck["goto LoopCheck<br>（条件チェックへジャンプ）"]
+
+    LoopBodyLabel["LoopBody:"]
+    dload1_body["dload_1<br>（ローカル変数 d を読み出し）"]
+    dconst1["dconst_1<br>（定数 1.0 をプッシュ）"]
+    dadd["dadd<br>（加算）"]
+    dstore1_body["dstore_1<br>（結果をローカル変数 d に格納）"]
+
+    LoopCheckLabel["LoopCheck:"]
+    dload1_check["dload_1<br>（ローカル変数 d を読み出し）"]
+    ldc2w100_1["ldc2_w 100.1<br>（定数 100.1 をプッシュ）"]
+    dcmpg["dcmpg<br>（比較）"]
+    iflt["iflt LoopBody<br>（d < 100.1 ならループ継続）"]
+
+    ret["return<br>（メソッド終了）"]
+
+    start --> dconst0 --> dstore1 --> gotoLoopCheck --> LoopCheckLabel
+    LoopCheckLabel --> dload1_check & ldc2w100_1 --> dcmpg --> iflt
+    iflt -- はい --> LoopBodyLabel --> dload1_body & dconst1 --> dadd --> dstore1_body --> LoopCheckLabel
+    iflt -- いいえ --> ret
+```
+
+    #### 命令は完全には直交していない
 
 ここで，或る読者は次のように考えるかもしれません：
 「`int` 型の制御変数を使ったループでは `if_icmplt` 命令が使われていたのに，これは `dcmpg` 命令のあとに `iflt` 命令が使われている。なぜだろう？」と。
@@ -387,13 +446,28 @@ Method lessThan100(double)
 ```
 :::
 
+
+
 ```mermaid
 flowchart TD
-    D1[dload_1] --> D2[ldc2_w 100.0]
-    D2 --> D3[dcmpg]
-    D3 -->|スタック ＞= 0| D4[ifge → Else]
-    D3 -->|スタック ＜ 0| D5[iconst_1 → ireturn]
-    D4 --> D6[iconst_m1 → ireturn]
+    dload_1["dload_1<br>（ローカル変数 1 の値を読み出し）"]
+    ldc2_w_100["ldc2_w 100.0<br>（定数 100.0 をスタックに積む）"]
+    dcmpg["dcmpg<br>（スタック上の 2 値を比較し，-1,0,1 を積む<br>※ NaN → 1）"]
+    ifge{"ifge<br>（結果が 0 以上？）"}
+
+    iconst_1["iconst_1<br>（定数 1 を積む）"]
+    iconst_m1["iconst_m1<br>（定数 -1 を積む）"]
+
+    ireturn1["ireturn<br>（スタックの値を返す）"]
+    ireturn2["ireturn<br>（スタックの値を返す）"]
+
+    dload_1 & ldc2_w_100--> dcmpg --> ifge
+
+    ifge -->|はい| iconst_m1
+    ifge -->|いいえ| iconst_1
+
+    iconst_1 --> ireturn1
+    iconst_m1 --> ireturn2
 ```
 
 この例では，`dcmpg` 命令を使用して `d` が *NaN* であるかどうかをチェックしています。  
@@ -416,11 +490,26 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    E1[dload_1] --> E2[ldc2_w 100.0]
-    E2 --> E3[dcmpl]
-    E3 -->|スタック ＞= 0| E4[ifge → Else]
-E3 -->|スタック ＜ 0 （NaN含む）| E5[iconst_1 → ireturn]
-E4 --> E6[iconst_m1 → ireturn]
+    dload_1["dload_1<br>（ローカル変数 1 を読み出す）"]
+    ldc2_w_100["ldc2_w 100.0<br>（定数 100.0 を積む）"]
+    dcmpl["dcmpl<br>（比較して -1/0/1 を積む<br>※ NaN → -1）"]
+    ifge{"ifge<br>（比較結果 ≥ 0？）"}
+
+    iconst_1["iconst_1<br>（1 を積む）"]
+    iconst_m1["iconst_m1<br>（-1 を積む）"]
+
+    ireturn1["ireturn<br>（戻り値として返す）"]
+    ireturn2["ireturn<br>（戻り値として返す）"]
+
+    dload_1 --> dcmpl
+    ldc2_w_100 --> dcmpl
+    dcmpl --> ifge
+
+    ifge -->|Yes| iconst_m1
+    ifge -->|No| iconst_1
+
+    iconst_1 --> ireturn1
+    iconst_m1 --> ireturn2
 ```
 
 IEEE 754 浮動小数点数の仕様に従うと，*NaN* はどの値とも等しくないため，あらゆる比較は偽となります。
@@ -473,17 +562,33 @@ Method greaterThan100(double)
 ```
 :::
 
-このように，*NaN* の扱いを適切に考慮することで，コンパイラは正しい比較命令を選択し，意図した動作を実現します。
+以下の図は，この一連の命令の流れを示しています。
 
 ```mermaid
 flowchart TD
-    G1[dload_1] --> G2[ldc2_w 100.0]
-    G2 --> G3[dcmpl]
-    G3 -->|スタック ＜= 0| G4[ifle → Else]
-    G3 -->|スタック ＞ 0| G5[iconst_1 → ireturn]
-    G4 --> G6[iconst_m1 → ireturn]
+    dload_1["dload_1<br>（ローカル変数 1 を読み出す）"]
+    ldc2_w_100["ldc2_w 100.0<br>（定数 100.0 を積む）"]
+    dcmpl["dcmpl<br>（比較して -1/0/1 を積む<br>※ NaN → -1）"]
+    ifle{"ifle<br>（比較結果 ≤ 0？）"}
+
+    iconst_1["iconst_1<br>（1 を積む）"]
+    iconst_m1["iconst_m1<br>（-1 を積む）"]
+
+    ireturn1["ireturn<br>（戻り値として返す）"]
+    ireturn2["ireturn<br>（戻り値として返す）"]
+
+    dload_1 --> dcmpl
+    ldc2_w_100 --> dcmpl
+    dcmpl --> ifle
+
+    ifle -->|Yes| iconst_m1
+    ifle -->|No| iconst_1
+
+    iconst_1 --> ireturn1
+    iconst_m1 --> ireturn2
 ```
 
+このように，*NaN* の扱いを適切に考慮することで，コンパイラは正しい比較命令を選択し，意図した動作を実現します。
 もし `dcmpg` 命令の両方が存在しなければ，*NaN* を検出するために，さらに多くの命令を必要とすることになるかもしれません。
 
 ### まとめ

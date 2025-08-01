@@ -109,6 +109,29 @@ Method void ispin()
 ```
 :::
 
+以下の図は，この一連の命令の流れを示しています。
+
+```mermaid
+flowchart TD
+    start("開始")
+    iconst0["iconst_0<br>（0 をプッシュ）"]
+    istore1["istore_1<br>（ローカル変数 1 に格納）"]
+    gotoLoopBody["goto LoopBody<br>（初回はインクリメントしない）"]
+    nextLoop["NextLoop:"]
+    iinc["iinc 1 1<br>（i++）"]
+    loopBody["LoopBody:"]
+    iload_1["iload_1<br>（i を読み出し）"]
+    bipush100["bipush 100<br>（100 をプッシュ）"]
+    if_icmplt{"if_icmplt NextLoop<br>（if i ＜ 100）"}
+    ret("return<br>（終了）")
+
+    start --> iconst0 & istore1 --> gotoLoopBody --> loopBody
+
+    loopBody --> iload_1 & bipush100--> if_icmplt
+    if_icmplt -- はい --> nextLoop --> iinc --> loopBody
+    if_icmplt -- いいえ --> ret
+```
+
 このコードは実際に JAL コードとして動作します。
 試しに IntelliJ IDEA のエディタ画面に入力し，動かしてみましょう（何も表示されませんが…）。
 
@@ -294,6 +317,39 @@ Method void dspin()
 さて，`double` 型の制御変数を使ったループでは `int` 型に特化した `iconst_0` などの替わりに， `dconst_0` や `dstore_1` のように `double` 型に特化した命令が使用されるようになったことが分かります。
 （`ldc2_w` 命令に関しては，少しトピックから外れてしまうのでこの章の最後に説明します。）
 
+以下の図は，この一連の命令の流れを示しています。
+
+```mermaid
+flowchart TD
+    start("開始")
+    dconst0["dconst_0<br>（0.0 をプッシュ）"]
+    dstore1_init["dstore_1<br>（ローカル変数 1 に格納）"]
+    gotoLoopBody["goto LoopBody<br>（初回はインクリメントしない）"]
+
+    loopBody["LoopBody:"]
+    dload_1["dload_1<br>（i を読み出し）"]
+    ldc100["ldc_w 100<br>（100.0 をプッシュ）"]
+    dcmpg["dcmpg<br>（比較）"]
+    ifgt{"ifgt NextLoop<br>（i < 100.0 の場合）"}
+
+    nextLoop["NextLoop:"]
+    dload1_next["dload_1<br>（i を読み出し）"]
+    dconst1["dconst_1<br>（1.0 をプッシュ）"]
+    dadd["dadd<br>（加算）"]
+    dstore1["dstore_1<br>（i に格納）"]
+
+    ret("return<br>（終了）")
+
+    start --> dconst0 --> dstore1_init --> gotoLoopBody --> loopBody
+    loopBody --> dload_1 & ldc100 --> dcmpg --> ifgt
+
+    ifgt -- はい --> nextLoop --> dload1_next & dconst1 --> dadd --> dstore1 --> loopBody
+    ifgt -- いいえ --> ret
+
+    dstore1_init .-> dload_1
+    dstore1 .-> dload_1
+```
+
 #### 命令は完全には直交していない
 
 ここで，或る読者は次のように考えるかもしれません：
@@ -353,6 +409,19 @@ Method double sumDoubles(double d1, double d2)
 3   dreturn             // スタックの値を返す
 ```
 :::
+
+以下の図は，この一連の命令の流れを示しています。
+
+```mermaid
+flowchart TD
+    start("開始")
+    dload1["dload_1<br>（d1 を読み出し）"]
+    dload3["dload_3<br>（d2 を読み出し）"]
+    dadd["dadd<br>（加算）"]
+    dreturn("dreturn<br>（結果を返す）")
+
+    start --> dload1 & dload3 --> dadd --> dreturn
+```
 
 :::message alert
 ここで勘の良い皆様は，例えば０番地に `long` 型の値があるとき，インデックスに１番地を指定してこの値にアクセスできるのではないかと思うかもしれません。
@@ -436,6 +505,37 @@ Method void sspin()
 :::
 
 このコードは，`short` 型の制御変数を使ったループですが，実際には `int` 型の命令（`iconst_0`, `istore_1`, `iload_1`, `iadd`, `if_icmplt` など）を使用しています。
+
+以下の図は，この一連の命令の流れを示しています。
+
+```mermaid
+flowchart TD
+    start("start")
+    iconst0["iconst_0<br>（0 を積む）"]
+    istore1["istore_1<br>（ローカル変数０に格納）"]
+    gotoLoopBody["goto LoopBody<br>（初回はインクリメント飛ばす）"]
+
+    nextLoop["NextLoop:"]
+    iload1_inc["iload_1<br>（i を読み出し）"]
+    iconst1["iconst_1<br>（1 を積む）"]
+    iadd["iadd<br>（i + 1）"]
+    i2s["i2s<br>（int → short）"]
+    istore1_loop["istore_1<br>（i に格納）"]
+
+    loopBody["LoopBody:"]
+    iload_1["iload_1"]
+    bipush100["bipush 100"]
+    if_icmplt["if_icmplt NextLoop<br>（if i < 100）"]
+    ret("return<br>（終了）")
+
+    start --> iconst0 & istore1 --> gotoLoopBody --> loopBody
+    loopBody --> iload_1 & bipush100 --> if_icmplt
+    if_icmplt -- yes --> nextLoop --> iload1_inc & iconst1 --> iadd --> i2s --> istore1_loop --> loopBody
+    if_icmplt -- no --> ret
+
+    istore1 .-> iload_1
+    istore1 .-> iload1_inc
+```
 
 #### `int` 型に拡張して扱うということ
 
