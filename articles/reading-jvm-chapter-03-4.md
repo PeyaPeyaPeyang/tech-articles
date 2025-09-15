@@ -598,6 +598,10 @@ flowchart TD
 
 次回は，メソッドを呼び出す方法について学びます。
 
+### 次回リンク
+
+https://zenn.dev/peyang/articles/reading-jvm-chapter-03-5-6
+
 #### 参考文献＆リンク集
 
 + Lindholm, T., Yellin, F., Bracha, G., & Smith, W. M. D. (2025). [*The Java® Virtual Machine Specification: Java SE 24 Edition*](https://docs.oracle.com/javase/specs/jvms/se24/html/).
