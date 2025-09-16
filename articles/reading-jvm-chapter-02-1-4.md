@@ -56,7 +56,6 @@ Java 言語で記述されたコードは，JVM が受け付ける唯一の機�
 ![byte-code](/images/reading-jvm-chapter-02-1-4/byte-code.png)
 （このすばらしいアプリケーションは，[ImHex](https://imhex.werwolv.net/)（[GitHub](https://github.com/WerWolv/ImHex)）というものです。Web 版もありますので，ぜひに！)
 
-
 これは `javap -v Main` コマンドを実行した結果（抜粋）です：
 ![javap](/images/reading-jvm-chapter-02-1-4/javap.png)
 
@@ -81,6 +80,7 @@ JVM は**プリミティブ型**と**参照型**の２つのデータ型をサ�
 例えば `iadd` や `ladd` のような命令は，それぞれ２つの数値を足して返すものですが。前者は `int` 型の値を，後者は `long` 型の値を扱います。
 
 このようにして JVM は**扱う型を命令ごとに明示的に指定**して，その型に応じた操作を行います。
+
 
 ---
 
