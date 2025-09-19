@@ -185,6 +185,38 @@ invokevirtual java/lang/invoke/MethodHandle->someSigPoly(IB)Z
 [invoke]: https://docs.oracle.com/javase/jp/24/docs/api/java.base/java/lang/invoke/MethodHandle.html#invoke(java.lang.Object...)
 [invokeExact]: https://docs.oracle.com/javase/jp/24/docs/api/java.base/java/lang/invoke/MethodHandle.html#invokeExact(java.lang.Object...)
 
+### 補足：メソッド・ディスクリプタについて
+
+`()V` や `([Ljava/lang/String;)V` は，メソッド・ディスクリプタ(*method descriptor*)と呼ばれるものです。
+これは名前と合わせてメソッドを一意に識別するためのもので，JVM ではこのようにしてメソッドを識別します。
+
+メソッド・ディスクリプタは，タイプ・ディスクリプタ(*type descriptor*)を使用してメソッドの引数と戻り値の型を表現します。
+タイプ・ディスクリプタは次のような形式で表現されます。
+- `B` - `byte` 型を表します。
+- `C` - `char` 型を表します。
+- `D` - `double` 型を表します。
+- `F` - `float` 型を表します。
+- `I` - `int` 型を表します。
+- `J` - `long` 型を表します。
+- `S` - `short` 型を表します。
+- `Z` - `boolean` 型を表します。
+- `V` - 戻り値がないことを表します。
+- `L` - `L<クラス名>;` の形式でクラス型を表します。
+- `[` - 配列型を表します。例えば `[[I` は `int` 型の二次元配列を表します。
+
+メソッド・ディスクリプタは，このタイプ・ディスクリプタを組み合わせて表現されます。
+構文は次のようになります。
+```
+(<引数の型>[引数2の型...])<戻り値の型>
+```
+例：
+- `([Ljava/lang/String;)V` は，引数として `java/lang/String` 型の配列を受け取り，戻り値がないことを示しています。
+- `(I)Ljava/lang/String;` は，引数として `int` 型を受け取り，戻り値として `java/lang/String` 型を返すことを示しています。
+- `(I)[Ljava/lang/String;` は，引数として `int` 型を受け取り，戻り値として `java/lang/String` 型の配列を返すことを示しています。
+- `(Ljava/lang/String;I)Z` は，引数として `java/lang/String` 型と `int` 型を受け取り，戻り値として `boolean` 型を返すことを示しています。
+
+
+
 
 ### まとめ
 
