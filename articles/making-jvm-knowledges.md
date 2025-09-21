@@ -1,7 +1,7 @@
 ---
 title: "Java 仮想マシンを自作したい全ての方々へ"
 emoji: "☕"
-type: "tech" # tech: 技術記事 / idea: アイデア
+type: "idea" # tech: 技術記事 / idea: アイデア
 topics: ["java", "jvm", "jal"]
 published: false
 ---
@@ -110,6 +110,10 @@ JVM は，Java のソース・コードを直接実行しているわけでは�
 (1 + 2) ^ 3 >> 2;
 ```
 
+詳しくは，小記事である「【簡単な】 Java 仮想マシンを自作したい全ての方々へ」をご参照ください。
+
+https://zenn.dev/peyang/articles/making-jvm-knowledges-lv-1-interpreter
+
 ### 2. 基本的な機能を備えたミニマルな JVM
 
 基本的な機能を備えたミニマルな JVM は，JVM の命令セットのすべてをサポートし，さらにメソッドの呼び出しや例外処理，少量の VM ネイティブ・メソッドなどの基本的な機能を実装します。
@@ -213,7 +217,7 @@ https://zenn.dev/peyang/articles/reading-jvm-chapter-00
 
 ### 4. The Java Compatibility Kit (JCK)
 
-[The Java Compatibility Kit (JCK)](https://www.oracle.com/java/technologies/javase/jck.html) は，Java プラットフォームの互換性を検証するためのテスト・スイートです。 これは，JVM が Java の仕様に準拠した実装であることを確認するために使用されます。
+[The Java Compatibility Kit (JCK)](https://www.oracle.com/java/technologies/javase/jck.html) は，Java プラットフォームの互換性を検証するためのテスト・スイートです。 これは，JVM が Java SE の仕様に準拠した実装であることを確認するために使用されます。
 JCK は，Java の各バージョンごとに提供されており，JVM の自作においても非常に役立ちます。 例えば，JVM の各機能が正しく動作しているかどうかを検証するために，TCK のテスト・ケースを実行してみるといったことが可能です。 これにより，JVM の実装の品質を向上させられます，
 
 ただし，JCK の利用には OpenJDK コミュニティへの申請と承認が必要であり，また商用利用にはライセンス料が発生する場合があります。
