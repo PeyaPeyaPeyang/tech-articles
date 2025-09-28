@@ -227,6 +227,19 @@ https://zenn.dev/peyang/articles/reading-jvm-chapter-00
 + [PHP で JVM を自作して，HelloWorld を出力してみる](https://speakerdeck.com/m3m0r7/php-de-jvm-woshi-zhuang-site-helloworld-wochu-li-sitemiru)： memory（めもりー）さんによる，PHP での JVM の実装です。JVM 自作界隈では名の知れたお方です。皆様も，この記事に辿り着く前に見たことがあるかもしれません。
   **JVM の仕様書の読み方や，JVM の実装に関する多くの知見が大変詰まっています**。もし，あなたが PHP で JVM を実装するつもりが無くても，このスライドは一読の価値があります。
 
+#### 便利なツール
+
+[Byte-Me](https://byte-me.dev/) は，JVM バイト・コードを視覚的に解析・理解するためのウェブアプリケーションです。 
+これは，JVM バイト・コードの命令セットや構造を学ぶための素晴らしいツールです！
+
+例えば，Java のソース・コードを入力すると，対応する JVM バイト・コードが生成され，その命令ごとに詳細な説明が表示されます。 これにより，JVM バイト・コードの各命令がどのように動作するかを直感的に理解できます。
+
+![Byte-Me のスクリーンショット](/images/making-jvm-knowledges/byte-me.png)
+
+さらに， [FullJEP](https://chriswhocodes.com/fulljep.html) という *Byte-Me* の姉妹サイトもあります。こちらは，JEP（*JDK Enhancement Proposal*）を全文検索・閲覧できるウェブアプリケーションです。 JEP は，Java プラットフォームの新機能や改善提案をまとめたドキュメントであり，JVM の自作においても非常に役立ちます。
+
+![FullJEP のスクリーンショット](/images/making-jvm-knowledges/jep-search.png)
+
 ### 4. The Java Compatibility Kit (JCK)
 
 [The Java Compatibility Kit (JCK)](https://www.oracle.com/java/technologies/javase/jck.html) は，Java プラットフォームの互換性を検証するためのテスト・スイートです。 これは，JVM が Java SE の仕様に準拠した実装であることを確認するために使用されます。
@@ -243,3 +256,8 @@ JVM を自作することは，Java の言語仕様や JVM の仕組みを深く
 この記事が，JVM を自作したい・自作している方々にとって，少しでも役立つことを願っています。 もし，この記事に関して質問やフィードバックがありましたら，ぜひコメント欄でお知らせください。
 
 では，よいバイト・コードライフを！
+
+#### 参考文献＆リンク集
+
++ Lindholm, T., Yellin, F., Bracha, G., & Smith, W. M. D. (2025). [*The Java® Virtual Machine Specification: Java SE 25 Edition*](https://docs.oracle.com/javase/specs/jvms/se25/html/).
++ Otavio, S. (2024). *Mastering the Java Virtual Machine*.  Packet Publishing. ISBN 978-1-835-46796-1
