@@ -4,7 +4,7 @@ emoji: "📜"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["minecraft", "minestom", "gameserver", "papermc"]
 publication_name: "kun_lab"
-published: false
+published: true
 ---
 
 はじめまして。Peyang （ぺやんぐ）と申します。
